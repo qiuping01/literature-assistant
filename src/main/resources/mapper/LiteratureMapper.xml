@@ -52,7 +52,7 @@
             <if test="req.tags != null and req.tags.size() > 0">
                 AND (
                     <foreach collection="req.tags" item="tag" separator=" OR ">
-                        JSON_CONTAINS(tags, JSON_QUOTE(#{tag}))
+                        tags LIKE CONCAT('%"', #{tag}, '"%')
                     </foreach>
                 )
             </if>
